@@ -49,12 +49,8 @@ io.on('connection', (socket) => {
 
 app.use(router)
 app.use(cors())
+app.get('/artem', (req,res)=>{
+  res.send('hello artem')
+})
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
-
-
-
-
-
-
-
