@@ -1,5 +1,12 @@
 const express = require('express');
-const socketio = require('socket.io');
+const socketio = require('socket.io')(httpServer, {
+  cors: {
+    origin: "https://example.com",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
+});
 const http = require('http');
 const cors = require('cors');
 
