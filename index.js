@@ -1,14 +1,6 @@
 const express = require('express');
-
+const socketio = require('socket.io');
 const http = require('http');
-const server = http.createServer(app);
-const socketio = require('socket.io')(server, {
-  cors: {
-    origin: "https://artemchat.herokuapp.com/",
-    methods: ["GET", "POST"],
-    credentials: false
-  }
-});
 const cors = require('cors');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js');
@@ -18,8 +10,8 @@ const PORT = process.env.PORT || 5000;
 const router = require('./router');
 
 const app = express();
-
-const io = socketio(server);
+// const server = http.createServer(app);
+const io = socketio(app);
 
 io.on('connection', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
@@ -61,4 +53,4 @@ app.get('/artem', (req,res)=>{
   res.send('hello artem')
 })
 
-server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
