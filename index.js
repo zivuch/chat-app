@@ -6,8 +6,7 @@ const socketio = require('socket.io')(server, {
   cors: {
     origin: "https://artemchat.herokuapp.com/",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
+    credentials: false
   }
 });
 const cors = require('cors');
