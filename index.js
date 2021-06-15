@@ -1,12 +1,5 @@
 const express = require('express');
-const socketio = require('socket.io')(httpServer, {
-  cors: {
-    origin: "https://artemchat.herokuapp.com/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
-});
+const socketio = require('socket.io');
 const http = require('http');
 const cors = require('cors');
 
